@@ -56,6 +56,10 @@ function and(xs::Union{AbstractArray, Tuple})
 end
 and(xs...) = and(xs)
 
+function forall(x::ExprAllocated, body::ExprAllocated)
+    forall(ExprVector(ctx(x), [x]), body)
+end
+
 # ------------------------------------------------------------------------------
 # ExprVector
 
